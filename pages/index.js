@@ -12,15 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <nav className={styles.mainNav}>
-        <ul>
-          <Link href="/"><li>Home</li></Link>
-          
-          <Link href="/about"><li>About</li></Link>
-          <Link href="/blogs"><li>Blogs</li></Link>
-          <Link href="/contact"><li>Contact</li></Link>
-        </ul>
-      </nav>
+     
 
       <main className={styles.main}>
         <h1 className={styles.title}>
@@ -32,30 +24,7 @@ export default function Home() {
           <code className={styles.code}>pages/index.js</code>
         </p>
 
-        <h2>Popular Blogs</h2>
-        <div className={styles.grid}>
-          <div>
-            <h3>How to learn Next.JS</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-              incidunt!
-            </p>
-          </div>
-          <div>
-            <h3>How to learn Next.JS</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-              incidunt!
-            </p>
-          </div>
-          <div>
-            <h3>How to learn Next.JS</h3>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi,
-              incidunt!
-            </p>
-          </div>
-        </div>
+       
       </main>
 
       <footer className={styles.footer}>
