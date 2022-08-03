@@ -1,0 +1,15 @@
+.grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .blogPost {
+    cursor: pointer;
+  }
+  .container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    }
+  
