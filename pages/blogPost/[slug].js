@@ -1,7 +1,6 @@
 import React from "react";
-import { useRouter } from "next/router";
+import * as fs from "fs";
 import { useState } from "react";
-import { useEffect } from "react";
 import styles from "../../styles/Blogs.module.css";
 const slug = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -26,11 +25,21 @@ const slug = (props) => {
 
 export default slug;
 
-export async function getServerSideProps(context) {
-  const { slug } = context.query;
-  const data = await fetch(`http://localhost:3000/api/blogdata?slug=${slug}`);
-  const blog = await data.json();
+export async function getStaticPaths() {
   return {
-    props: { blog }, // will be passed to the page component as props
+    paths: [
+      { params: { slug: "how-to-learn-javascript" } },
+      { params: { slug: "how-to-learn-react" } },
+      { params: { slug: "how-to-learn-nextjs" } },
+    ],
+    fallback: true, // can also be true or 'blocking'
+  };
+}
+
+export async function getStaticProps(context) {
+  const { slug } = context.params;
+  const blog = await fs.promises.readFile(`blogdata/${slug}.json`, "utf-8");
+  return {
+    props: { blog: JSON.parse(blog) }, // will be passed to the page component as props
   };
 }

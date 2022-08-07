@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/Blogs.module.css";
 import Link from "next/link";
+import * as fs from "fs";
 
 const blogs = (props) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -34,9 +35,15 @@ const blogs = (props) => {
 
 export default blogs;
 
-export async function getServerSideProps(context) {
-  const data = await fetch("http://localhost:3000/api/blog");
-  const blogs = await data.json();
+export async function getStaticProps(context) {
+  const data = await fs.promises.readdir(`blogdata`);
+  let myFiles;
+  let blogs = [];
+  for (let i = 0; i < data.length; i++) {
+    const item = data[i];
+    myFiles = await fs.promises.readFile(`blogdata/` +item, "utf-8");
+    blogs.push(JSON.parse(myFiles));
+  }
   return {
     props: { blogs }, // will be passed to the page component as props
   };
