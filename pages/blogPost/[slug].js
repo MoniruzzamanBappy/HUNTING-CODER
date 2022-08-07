@@ -26,7 +26,7 @@ const slug = (props) => {
 
 export default slug;
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const { slug } = context.query;
   const data = await fetch(`http://localhost:3000/api/blogdata?slug=${slug}`);
   const blog = await data.json();
